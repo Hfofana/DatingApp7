@@ -2,7 +2,7 @@ using System.Data;
 using API.Data;
 using API.Data.Migrations;
 using API.Extensions;
-using API.Middleware;
+using API.Errors;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

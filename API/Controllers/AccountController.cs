@@ -1,4 +1,4 @@
-﻿using System.Security.Cryptography;
+﻿﻿﻿using System.Security.Cryptography;
 using System.Text;
 using API.Data;
 using API.DTOs;
@@ -19,9 +19,9 @@ public class AccountController : BaseApiController
 
     public AccountController(DataContext context, ITokenService tokenService, IMapper mapper)
     {
-        _mapper = mapper;
         _context = context;
         _tokenService = tokenService;
+        _mapper = mapper;
     }
 
     [HttpPost("register")]
@@ -37,7 +37,6 @@ public class AccountController : BaseApiController
         user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
         user.PasswordSalt = hmac.Key;
 
-
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
@@ -45,7 +44,8 @@ public class AccountController : BaseApiController
         {
             Username = user.UserName,
             Token = _tokenService.CreateToken(user),
-            KnownAs = user.KnownAs
+            KnownAs = user.KnownAs,
+            Gender = user.Gender
         };
     }
 
@@ -72,7 +72,8 @@ public class AccountController : BaseApiController
             Username = user.UserName,
             Token = _tokenService.CreateToken(user),
             PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
-            KnownAs = user.KnownAs
+            KnownAs = user.KnownAs,
+            Gender = user.Gender
         };
     }
 

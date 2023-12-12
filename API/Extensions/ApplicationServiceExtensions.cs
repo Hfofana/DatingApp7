@@ -1,4 +1,4 @@
-﻿using API.Data;
+﻿﻿﻿using API.Data;
 using API.Helpers;
 using API.interfaces;
 using API.Interfaces;
@@ -20,6 +20,7 @@ public static class ApplicationServiceExtensions
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
         services.AddScoped<IPhotoService, PhotoService>();
+        services.AddScoped<LogUserActivity>();
 
         return services;
     }
