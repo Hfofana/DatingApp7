@@ -7,6 +7,7 @@ import { PaginatedResult } from '../_modules/pagination';
 import { UserParams } from '../_models/userParams';
 import { AccountService } from './account.service';
 import { User } from '../_models/user';
+import { PAGER_CONTROL_VALUE_ACCESSOR } from 'ngx-bootstrap/pagination/pager.component';
 
 @Injectable({
   providedIn: 'root'
@@ -89,6 +90,16 @@ export class MembersService {
 
   deletePhoto(photoId: number) {
     return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
+  }
+
+  addLike(username: string){
+    return this.http.post(this.baseUrl+ 'likes/'+ username, {});
+  }
+
+  getLikes(predicate: string, pageNumber: number, pageSize:number){
+    let params = this.getPaginationHeaders(pageNumber, pageSize);
+    params = params.append('predicate',predicate);
+    return this.http.get<Member[]>(this.baseUrl+'likes?predicate'+ predicate);
   }
 
   private getPaginatedResult<T>(url: string, params: HttpParams) {
