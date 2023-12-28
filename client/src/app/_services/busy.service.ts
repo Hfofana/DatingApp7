@@ -11,17 +11,17 @@ export class BusyService {
 
   busy() {
     this.busyRequestCount++;
-    this.spinnerService.show(undefined,{
-      type:'line-scale-party',
-      bdColor:'rgba(255,255,255,0)',
-      color:'#333333'
+    this.spinnerService.show(undefined, {
+      type: 'line-scale-party',
+      bdColor: 'rgba(255,255,255,0)',
+      color: '#333333'
     })
   }
 
-  idle(){
+  idle() {
     this.busyRequestCount--;
-    if(this.busyRequestCount <=0){
-      this.busyRequestCount =0;
+    if (this.busyRequestCount <= 0) {
+      this.busyRequestCount = 0;
       this.spinnerService.hide();
     }
   }

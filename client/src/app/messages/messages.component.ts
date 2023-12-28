@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Message } from '../_modules/message';
-import { Pagination } from '../_modules/pagination';
+import { Message } from '../_models/message';
+import { Pagination } from '../_models/pagination';
 import { MessageService } from '../_services/message.service';
 
 @Component({

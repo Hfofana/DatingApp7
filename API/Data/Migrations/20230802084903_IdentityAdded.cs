@@ -35,17 +35,13 @@ namespace API.Data.Migrations
                 name: "PK_Users",
                 table: "Users");
 
+            migrationBuilder.DropColumn(
+                name: "PasswordSalt",
+                table: "Users");
+
             migrationBuilder.RenameTable(
                 name: "Users",
                 newName: "AspNetUsers");
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "DateRead",
-                table: "Messages",
-                type: "TEXT",
-                nullable: true,
-                oldClrType: typeof(DateTime),
-                oldType: "TEXT");
 
             migrationBuilder.AlterColumn<string>(
                 name: "PasswordHash",
@@ -445,16 +441,6 @@ namespace API.Data.Migrations
                 name: "AspNetUsers",
                 newName: "Users");
 
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "DateRead",
-                table: "Messages",
-                type: "TEXT",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                oldClrType: typeof(DateTime),
-                oldType: "TEXT",
-                oldNullable: true);
-
             migrationBuilder.AlterColumn<byte[]>(
                 name: "PasswordHash",
                 table: "Users",
@@ -463,6 +449,12 @@ namespace API.Data.Migrations
                 oldClrType: typeof(string),
                 oldType: "TEXT",
                 oldNullable: true);
+
+            migrationBuilder.AddColumn<byte[]>(
+                name: "PasswordSalt",
+                table: "Users",
+                type: "BLOB",
+                nullable: true);
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Users",

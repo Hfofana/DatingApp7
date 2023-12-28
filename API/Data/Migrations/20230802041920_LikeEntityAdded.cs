@@ -5,16 +5,11 @@
 namespace API.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class LikedEntityAdded : Migration
+    public partial class LikeEntityAdded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "publicId",
-                table: "Photos",
-                newName: "PublicId");
-
             migrationBuilder.CreateTable(
                 name: "Likes",
                 columns: table => new
@@ -50,11 +45,6 @@ namespace API.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Likes");
-
-            migrationBuilder.RenameColumn(
-                name: "PublicId",
-                table: "Photos",
-                newName: "publicId");
         }
     }
 }

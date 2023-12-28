@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231218155840_IdentityAdded")]
+    [Migration("20230802084903_IdentityAdded")]
     partial class IdentityAdded
     {
         /// <inheritdoc />
@@ -113,9 +113,6 @@ namespace API.Data.Migrations
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("TEXT");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .HasColumnType("BLOB");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("TEXT");
